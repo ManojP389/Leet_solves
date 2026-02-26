@@ -1,0 +1,23 @@
+class Solution{
+    public boolean isPalindrom(ListNode head){
+        if(head == null || head.next ==null){
+            return true;
+        }
+        ListNode curr = head;
+        List<Integer> l = new ArrayList<>();
+        while(curr!=null){
+            l.add(curr.val);
+            curr=curr.next;
+        }
+        int start = 0;
+        int last = l.size()-1;
+        while(start<last){
+            if(l.get(start)!=l.get(last)){
+                return false;
+            }
+            start++;
+            last--;
+        }
+        return true;
+    }
+}

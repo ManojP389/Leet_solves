@@ -1,0 +1,37 @@
+class Solution{
+   public ListNode AddTwoNumber(ListNode l1, ListNode l2){
+       ListNode dummy = new ListNode(-1);
+       ListNode pre = dummy;  
+       int carry = 0;
+       
+       while(l1!=null || l2!=null){
+          //after every addition sum should initialized to 0+carry
+           int sum = 0+carry;
+           if(l1!=null){
+              sum+=l1.val;
+              l1 = l1.next;
+           }
+           if(l2!=null){
+              sum+=l2.val;
+              l2 = l2.next;
+           }
+           //separation of carry and sum
+           carry = sum/10;
+           sum = sum%10;
+           pre.next = new ListNode(sum);
+           pre=pre.next;
+          
+       }
+       //even if all values in both ll completed but still carry exits it should be added to last of ll
+       if(carry==1){  
+          pre.next = new ListNode(1);
+          
+       }
+
+
+      return dummy.next;
+       
+      
+
+   }
+}
