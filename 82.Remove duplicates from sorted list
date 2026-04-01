@@ -1,0 +1,27 @@
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+        ListNode curr = head;
+        //if we found duplicate nodes 
+        while(curr!=null){
+            if(curr.next!=null && curr.val == curr.next.val){
+                //we need to take curr pointer untill last of duplicate nodes
+                while(curr.next!=null && curr.val == curr.next.val){
+                    curr=curr.next;
+                }
+                //skipping the dupliacate nodes
+                pre.next = curr.next;
+            }else{
+                //once we found unique elements 
+                pre=pre.next;
+
+            }
+            
+            curr = curr.next;
+        }
+        return dummy.next;
+        
+    }
+}
